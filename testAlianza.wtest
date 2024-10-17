@@ -1,0 +1,44 @@
+import alianza.*
+import guerreros.*
+describe "la alianza" {
+    method initialize(){
+       arturito.entrenar()
+       yoda.entrenar()
+        c3po.entrenar()
+        alianza.reclutar(arturito)
+        alianza.reclutar(yoda)
+        alianza.reclutar(c3po)
+    }
+
+  test "la alianza tiene solo 3 guerreros" {
+    assert.equals(3,alianza.cantidadGuerreros())
+  }
+
+    test "la alianza tiene a arturirto, yoda y c3po"{
+        assert.equals([arturito,yoda,c3po],alianza.guerreros())
+    }
+
+    test "el poder total del ejercito es 233"{
+        assert.equals(25+25+25+78+50+30,alianza.poderTotalEjercito())
+    }
+
+    test "no es un ejercito poderoso"{
+        assert.notThat(alianza.tieneUnPoderSuperiorA50())
+    }
+
+    test "los guerreros debiles con un parametro de 59 son unicamente Yoda"{
+        assert.equals([yoda],alianza.guerrerosDebiles(59))
+    }
+
+    test "no ganaria una batalla si el parametro fuera de 250"{
+        assert.notThat(alianza.ganarBatalla(250))
+    }
+
+    test "poca salud y mucho poder es verdadero"{
+        assert.that(alianza.tienePocaSaludYMuchoPoder())
+    }
+
+    test "lista de nombres de campeones es din grogu y c3po"{
+        assert.equals(["Din Grogu", "C-3P0"],alianza.listaDeNombres())
+    }
+}
